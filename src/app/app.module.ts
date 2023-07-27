@@ -13,6 +13,7 @@ import { ExcluirPensamentoComponent } from './componentes/pensamentos/excluir-pe
 import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { MenuComponent } from './componentes/menu/menu.component';
+import { ListarUfComponent } from './componentes/ufs/listar-uf/listar-uf.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MenuComponent } from './componentes/menu/menu.component';
     PensamentoComponent,
     ExcluirPensamentoComponent,
     EditarPensamentoComponent,
-    MenuComponent
+    MenuComponent,
+    ListarUfComponent
   ],
   imports: [
     BrowserModule,

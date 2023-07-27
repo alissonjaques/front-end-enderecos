@@ -5,6 +5,7 @@ import { ListarPensamentoComponent } from './componentes/pensamentos/listar-pens
 import { ExcluirPensamentoComponent } from './componentes/pensamentos/excluir-pensamento/excluir-pensamento.component';
 import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
 import { MenuComponent } from './componentes/menu/menu.component';
+import { ListarUfComponent } from './componentes/ufs/listar-uf/listar-uf.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
+  },
+  {
+    path: 'ufs',
+    component: ListarUfComponent
   },
   {
     path: 'criarPensamento',
