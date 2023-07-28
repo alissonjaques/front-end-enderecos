@@ -14,6 +14,7 @@ import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pens
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { ListarUfComponent } from './componentes/ufs/listar-uf/listar-uf.component';
+import { EditarUfComponent } from './componentes/ufs/editar-uf/editar-uf.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListarUfComponent } from './componentes/ufs/listar-uf/listar-uf.compone
     ExcluirPensamentoComponent,
     EditarPensamentoComponent,
     MenuComponent,
-    ListarUfComponent
+    ListarUfComponent,
+    EditarUfComponent
   ],
   imports: [
     BrowserModule,

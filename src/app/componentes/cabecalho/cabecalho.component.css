@@ -1,18 +1,17 @@
 .cabecalho {
   background: url(/assets/imagens/fundo-cabecalho.png);
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .cabecalho .logo {
   padding: 5rem;
+  text-align: center;
+  /* Centralizar o texto horizontalmente */
 }
 
 .cabecalho p {
   font-size: 2rem;
-  color: #6BD1FF;
+  color: #ffffff;
 }
 
 @media (max-width: 576px) {
@@ -21,7 +20,7 @@
   }
 
   .cabecalho p {
-    font-size: 1.5rem
+    font-size: 1.5rem;
   }
 }
 

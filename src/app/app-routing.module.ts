@@ -6,6 +6,7 @@ import { ExcluirPensamentoComponent } from './componentes/pensamentos/excluir-pe
 import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { ListarUfComponent } from './componentes/ufs/listar-uf/listar-uf.component';
+import { EditarUfComponent } from './componentes/ufs/editar-uf/editar-uf.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'ufs',
     component: ListarUfComponent
+  },
+  {
+    path: 'ufs/:codigoUF',
+    component: EditarUfComponent
   },
   {
     path: 'criarPensamento',
@@ -37,7 +42,6 @@ const routes: Routes = [
     path: 'pensamentos/editarPensamento/:id',
     component: EditarPensamentoComponent
   }
-
 ];
 
 @NgModule({

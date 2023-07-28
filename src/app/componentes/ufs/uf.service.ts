@@ -21,7 +21,7 @@ export class UfService {
   }
 
   editar(uf: Uf): Observable<Uf> {
-    return this.http.put<Uf>(this.API, uf)
+    return this.http.put<Uf>(this.API, uf )
   }
 
   excluir(codigoUF: number): Observable<Uf> {
@@ -30,7 +30,7 @@ export class UfService {
   }
 
   buscarPorCodigoUF(codigoUf: number): Observable<Uf> {
-    const url = `${this.API}/${codigoUf}`
+    const url = `${this.API}?codigoUF=${codigoUf}`
     return this.http.get<Uf>(url)
   }
 }

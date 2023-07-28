@@ -12,13 +12,6 @@ export class ListarUfComponent implements OnInit {
 
   listaUfs: Uf[] = [];
 
-  uf: Uf = {
-    codigoUF: 0,
-    sigla: '',
-    nome: '',
-    status: 1
-  }
-
   constructor(
     private service: UfService,
     private router: Router,
@@ -31,11 +24,14 @@ export class ListarUfComponent implements OnInit {
     })
   }
 
-  editarUf() {
-    this.service.editar(this.uf).subscribe(() => {
-      this.router.navigate(['/ufs'])
-    })
+  adicionarUf() {
+    this.router.navigate(['/ufs/editarUf'])
+  }
 
+  editarUf(codigoUF: number | undefined) {
+    if(codigoUF){
+      this.router.navigate([`/ufs/${codigoUF}`])
+    }
   }
 
   cancelar() {
