@@ -9,6 +9,7 @@ import { ListarUfComponent } from "./componentes/ufs/listar-uf/listar-uf.compone
 import { EditarUfComponent } from "./componentes/ufs/editar-uf/editar-uf.component";
 import { ErroComponent } from "./componentes/erro/erro.component";
 import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component";
+import { ListarMunicipioComponent } from "./componentes/municipios/listar-municipio/listar-municipio.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: "ufs/criarUf",
     component: CriarUfComponent,
+  },
+  {
+    path: "municipios",
+    component: ListarMunicipioComponent,
   },
   {
     path: "criarPensamento",

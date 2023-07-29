@@ -1,0 +1,29 @@
+<div class="container editar-pensamentos ff-inter">
+  <table>
+    <thead>
+      <tr>
+        <th>Código Município</th>
+        <th>UF</th>
+        <th>Nome</th>
+        <th>Status</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let municipio of listaMunicipios">
+        <td>{{municipio.codigoMunicipio}}</td>
+        <td>{{municipio.uf.codigoUF}} - {{municipio.uf.sigla}}</td>
+        <td>{{municipio.nome}}</td>
+        <td>{{municipio.status}}</td>
+        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarUf(municipio.codigoMunicipio)" alt="Editar"></td>
+        <td><img src="../../../../assets/imagens/icone-excluir.png" alt="Deletar"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="acoes button-container">
+    <button class="custom-button" (click)="adicionarMunicipio()" class="botao">Adicionar</button>
+    <button class="custom-button" (click)="cancelar()" class="botao">Voltar</button>
+  </div>
+</div>
+
