@@ -1,41 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Uf } from '../Uf';
-import { UfService } from '../uf.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Uf } from "../interfaces/Uf";
+import { ActivatedRoute, Router } from "@angular/router";
+import { UfService } from "../services/uf.service";
 
 @Component({
-  selector: 'app-listar-uf',
-  templateUrl: './listar-uf.component.html',
-  styleUrls: ['./listar-uf.component.css']
+  selector: "app-listar-uf",
+  templateUrl: "./listar-uf.component.html",
+  styleUrls: ["./listar-uf.component.css"],
 })
 export class ListarUfComponent implements OnInit {
-
   listaUfs: Uf[] = [];
 
   constructor(
     private service: UfService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.service.listar().subscribe((listaUfs) => {
-      this.listaUfs = listaUfs
-    })
+      this.listaUfs = listaUfs;
+    });
   }
 
   adicionarUf() {
-    this.router.navigate(['/ufs/editarUf'])
+    this.router.navigate(["/ufs/editarUf"]);
   }
 
   editarUf(codigoUF: number | undefined) {
-    if(codigoUF){
-      this.router.navigate([`/ufs/${codigoUF}`])
+    if (codigoUF) {
+      this.router.navigate([`/ufs/${codigoUF}`]);
     }
   }
 
   cancelar() {
-    this.router.navigate(['/menu'])
+    this.router.navigate(["/menu"]);
   }
-
 }

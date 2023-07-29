@@ -1,9 +1,9 @@
 import { catchError } from "rxjs";
 import { Component, OnInit } from "@angular/core";
-import { Uf } from "../Uf";
-import { UfService } from "../uf.service";
+import { Uf } from "../interfaces/Uf";
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { UfService } from "../services/uf.service";
 
 @Component({
   selector: "app-editar-uf",
