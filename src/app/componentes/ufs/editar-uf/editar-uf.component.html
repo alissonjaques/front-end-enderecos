@@ -1,25 +1,27 @@
 <section class="container editar-ufs ff-inter">
   <form>
     <header class="header">
-      <h2>Edição - Unidade Federativa com codigoUF = {{uf.codigoUF}}</h2>
+      <h2>Edição - Unidade Federativa codigoUF = {{uf.codigoUF}}</h2>
     </header>
 
-    <div class="campo">
-      <label for="nome">Nome</label>
-      <input type="textarea" class="input" id="nome" name="nome" placeholder="Digite o nome" [(ngModel)]="uf.nome">
-    </div>
+    <div class="campo-linha">
+      <div class="campo campo-nome">
+        <label for="nome">Nome</label>
+        <input type="textarea" class="input" id="nome" name="nome" placeholder="Digite o nome" [(ngModel)]="uf.nome">
+      </div>
 
-    <div class="campo">
-      <label for="sigla">Sigla</label>
-      <input type="text" class="input" id="sigla" name="sigla" placeholder="Digite a sigla" [(ngModel)]="uf.sigla">
-    </div>
+      <div class="campo campo-sigla">
+        <label for="sigla">Sigla</label>
+        <input type="text" class="input" id="sigla" name="sigla" placeholder="Digite a sigla" [(ngModel)]="uf.sigla">
+      </div>
 
-    <div class="campo">
-      <label for="status">Status</label>
-      <select class="input" id="status" name="status" [(ngModel)]="uf.status">
-        <option value="1">Ativo</option>
-        <option value="2">Inativo</option>
-      </select>
+      <div class="campo campo-status">
+        <label for="status">Status</label>
+        <select class="input" id="status" name="status" [(ngModel)]="uf.status">
+          <option value="1">Ativo</option>
+          <option value="2">Inativo</option>
+        </select>
+      </div>
     </div>
 
     <div class="acoes">

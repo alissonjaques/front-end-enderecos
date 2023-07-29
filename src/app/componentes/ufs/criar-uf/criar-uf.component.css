@@ -36,19 +36,36 @@
   margin-bottom: 0.5rem;
 }
 
+.criar-ufs form .campo-linha {
+  display: flex;
+}
+
 .criar-ufs form .campo .input,
 .criar-ufs form .campo select {
   border: none;
   height: 40px;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 20px;
-  margin: 0.5rem 0;
+  flex: 1;
+  /* Ajustado para flex: 1 */
+  margin: 0.5rem 4;
+  margin-right: 40px;
 }
 
-.criar-ufs form .campo .input {
+.criar-ufs form .campo-linha {
+  display: flex;
+}
+
+.criar-ufs form .campo {
   flex: 1;
 }
 
-.criar-ufs form .campo select {
-  flex: 2;
+.criar-ufs form .campo-nome {
+  flex-basis: 60%;
+}
+
+.criar-ufs form .campo-sigla,
+.criar-ufs form .campo-status {
+  flex-basis: 20%;
+  margin-left: 5px;
 }
