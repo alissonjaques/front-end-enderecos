@@ -8,6 +8,7 @@ import { MenuComponent } from "./componentes/menu/menu.component";
 import { ListarUfComponent } from "./componentes/ufs/listar-uf/listar-uf.component";
 import { EditarUfComponent } from "./componentes/ufs/editar-uf/editar-uf.component";
 import { ErroComponent } from "./componentes/erro/erro.component";
+import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component";
 
 const routes: Routes = [
   {
@@ -24,8 +25,12 @@ const routes: Routes = [
     component: ListarUfComponent,
   },
   {
-    path: "ufs/:codigoUF",
+    path: "ufs/editarUf/:codigoUF",
     component: EditarUfComponent,
+  },
+  {
+    path: "ufs/criarUf",
+    component: CriarUfComponent,
   },
   {
     path: "criarPensamento",

@@ -11,11 +11,7 @@ import { UfService } from "../services/uf.service";
 export class ListarUfComponent implements OnInit {
   listaUfs: Uf[] = [];
 
-  constructor(
-    private service: UfService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private service: UfService, private router: Router) {}
 
   ngOnInit(): void {
     this.service.listar().subscribe((listaUfs) => {
@@ -24,12 +20,12 @@ export class ListarUfComponent implements OnInit {
   }
 
   adicionarUf() {
-    this.router.navigate(["/ufs/editarUf"]);
+    this.router.navigate(["/ufs/criarUf"]);
   }
 
   editarUf(codigoUF: number | undefined) {
     if (codigoUF) {
-      this.router.navigate([`/ufs/${codigoUF}`]);
+      this.router.navigate([`/ufs/editarUf/${codigoUF}`]);
     }
   }
 
