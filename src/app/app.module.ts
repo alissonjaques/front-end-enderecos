@@ -18,6 +18,7 @@ import { EditarUfComponent } from "./componentes/ufs/editar-uf/editar-uf.compone
 import { ErroComponent } from "./componentes/erro/erro.component";
 import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component";
 import { ListarMunicipioComponent } from './componentes/municipios/listar-municipio/listar-municipio.component';
+import { CriarMunicipioComponent } from './componentes/municipios/criar-municipio/criar-municipio.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ListarMunicipioComponent } from './componentes/municipios/listar-munici
     ErroComponent,
     CriarUfComponent,
     ListarMunicipioComponent,
+    CriarMunicipioComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

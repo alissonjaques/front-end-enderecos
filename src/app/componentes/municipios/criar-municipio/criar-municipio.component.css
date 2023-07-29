@@ -1,0 +1,71 @@
+.acoes {
+  display: flex;
+  justify-content: center;
+}
+
+.botao {
+  margin: 5px;
+}
+
+.criar-municipios {
+  padding: 2rem 0;
+}
+
+.criar-municipios form {
+  background: #C4EDFF;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.criar-municipios form label {
+  color: #154580;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+.criar-municipios form .campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.criar-municipios form .campo label {
+  margin-bottom: 0.5rem;
+}
+
+.criar-municipios form .campo-linha {
+  display: flex;
+}
+
+.criar-municipios form .campo .input,
+.criar-municipios form .campo select {
+  border: none;
+  height: 40px;
+  padding: 0.8rem 2rem;
+  border-radius: 20px;
+  flex: 1;
+  /* Ajustado para flex: 1 */
+  margin: 0.5rem 4;
+  margin-right: 40px;
+}
+
+.criar-municipios form .campo-linha {
+  display: flex;
+}
+
+.criar-municipios form .campo {
+  flex: 1;
+}
+
+.criar-municipios form .campo-nome {
+  flex-basis: 60%;
+}
+
+.criar-municipios form .campo-codigoUF,
+.criar-municipios form .campo-status {
+  flex-basis: 20%;
+  margin-left: 5px;
+}
