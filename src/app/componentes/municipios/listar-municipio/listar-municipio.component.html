@@ -1,4 +1,7 @@
 <div class="container editar-pensamentos ff-inter">
+  <header class="header">
+    <h2>Municípios</h2>
+  </header>
   <table>
     <thead>
       <tr>
@@ -16,7 +19,7 @@
         <td>{{municipio.uf.codigoUF}} - {{municipio.uf.sigla}}</td>
         <td>{{municipio.nome}}</td>
         <td>{{municipio.status}}</td>
-        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarUf(municipio.codigoMunicipio)" alt="Editar"></td>
+        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarMunicipio(municipio.codigoMunicipio)" alt="Editar"></td>
         <td><img src="../../../../assets/imagens/icone-excluir.png" alt="Deletar"></td>
       </tr>
     </tbody>

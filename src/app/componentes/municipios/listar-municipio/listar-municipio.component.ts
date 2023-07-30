@@ -37,7 +37,7 @@ export class ListarMunicipioComponent implements OnInit {
     this.router.navigate(["/municipios/criarMunicipio"]);
   }
 
-  editarUf(codigoMunicipio: number | undefined) {
+  editarMunicipio(codigoMunicipio: number | undefined) {
     if (codigoMunicipio) {
       this.router.navigate([`/municipios/editarMunicipio/${codigoMunicipio}`]);
     }
