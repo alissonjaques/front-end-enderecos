@@ -1,5 +1,6 @@
 main {
-  background: url(/assets/imagens/teste-cabecalho.png);
   background-size: cover;
+  background-color: rgb(255, 245, 245);
   min-height: 60vh;
+  padding: 2.5rem;
 }

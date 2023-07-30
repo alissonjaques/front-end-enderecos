@@ -7,7 +7,7 @@ footer {
   grid-template-areas:
     "TextoCopyright LogoRodape .";
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
 }
 
 .TextoCopyright {
