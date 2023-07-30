@@ -12,6 +12,7 @@ import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component"
 import { ListarMunicipioComponent } from "./componentes/municipios/listar-municipio/listar-municipio.component";
 import { CriarMunicipioComponent } from "./componentes/municipios/criar-municipio/criar-municipio.component";
 import { EditarMunicipioComponent } from "./componentes/municipios/editar-municipio/editar-municipio.component";
+import { ListarBairroComponent } from "./componentes/bairros/listar-bairro/listar-bairro.component";
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: "municipios/editarMunicipio/:codigoMunicipio",
     component: EditarMunicipioComponent,
+  },
+  {
+    path: "bairros",
+    component: ListarBairroComponent,
   },
   {
     path: "criarPensamento",

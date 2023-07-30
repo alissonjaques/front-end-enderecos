@@ -20,6 +20,7 @@ import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component"
 import { ListarMunicipioComponent } from './componentes/municipios/listar-municipio/listar-municipio.component';
 import { CriarMunicipioComponent } from './componentes/municipios/criar-municipio/criar-municipio.component';
 import { EditarMunicipioComponent } from './componentes/municipios/editar-municipio/editar-municipio.component';
+import { ListarBairroComponent } from './componentes/bairros/listar-bairro/listar-bairro.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EditarMunicipioComponent } from './componentes/municipios/editar-munici
     ListarMunicipioComponent,
     CriarMunicipioComponent,
     EditarMunicipioComponent,
+    ListarBairroComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
