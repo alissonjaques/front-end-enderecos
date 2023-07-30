@@ -1,7 +1,7 @@
 <section class="container editar-municipios ff-inter">
   <form>
     <header class="header">
-      <h2>Cadastro de Município</h2>
+      <h2>Edição de Município</h2>
     </header>
 
     <div class="campo-linha">
@@ -12,7 +12,7 @@
       </div>
 
       <div class="campo campo-codigoUF">
-        <label for="codigoUF">Código UF</label>
+        <label for="codigoUF">UF</label>
         <select class="input" id="codigoUF" name="codigoUF" [(ngModel)]="municipio.codigoUF">
           <option *ngFor="let uf of listaUfs" [value]="uf.codigoUF">{{uf.codigoUF}} - {{uf.nome}}</option>
         </select>
