@@ -12,7 +12,9 @@
 
       <div class="campo campo-sigla">
         <label for="sigla">Sigla</label>
-        <input type="text" class="input" id="sigla" name="sigla" placeholder="Digite a sigla" [(ngModel)]="uf.sigla">
+        <select class="input" id="sigla" name="sigla" [(ngModel)]="uf.sigla">
+          <option *ngFor="let sigla of siglas" [value]="sigla.sigla">{{sigla.sigla}} - {{sigla.nome}}</option>
+        </select>
       </div>
 
       <div class="campo campo-status">

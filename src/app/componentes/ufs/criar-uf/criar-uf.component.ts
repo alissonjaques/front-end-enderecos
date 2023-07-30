@@ -3,6 +3,7 @@ import { Uf } from "../interfaces/Uf";
 import { UfService } from "../services/uf.service";
 import { NavigationExtras, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Siglas } from "src/app/utils/Siglas";
 
 @Component({
   selector: "app-criar-uf",
@@ -16,6 +17,8 @@ export class CriarUfComponent implements OnInit {
     nome: "",
     status: 0,
   };
+
+  siglas = Siglas;
 
   constructor(private service: UfService, private router: Router) {}
 

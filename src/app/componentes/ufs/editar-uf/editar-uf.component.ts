@@ -4,6 +4,7 @@ import { Uf } from "../interfaces/Uf";
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { UfService } from "../services/uf.service";
+import { Siglas } from "src/app/utils/Siglas";
 
 @Component({
   selector: "app-editar-uf",
@@ -17,6 +18,8 @@ export class EditarUfComponent implements OnInit {
     nome: "",
     status: 0,
   };
+
+  siglas = Siglas;
 
   constructor(
     private service: UfService,
