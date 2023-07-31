@@ -49,7 +49,7 @@ export class EditarMunicipioComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/municipios/criarMunicipio`;
+        const url = `/municipios/editarMunicipio/${this.municipio.codigoMunicipio}`;
         const parametros: NavigationExtras = {
           queryParams: { mensagem: mensagem, status: status, url: url },
         };
