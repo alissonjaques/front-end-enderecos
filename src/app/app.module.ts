@@ -18,6 +18,9 @@ import { EditarMunicipioComponent } from "./componentes/municipios/editar-munici
 import { ListarBairroComponent } from "./componentes/bairros/listar-bairro/listar-bairro.component";
 import { CriarBairroComponent } from "./componentes/bairros/criar-bairro/criar-bairro.component";
 import { EditarBairroComponent } from "./componentes/bairros/editar-bairro/editar-bairro.component";
+import { ListarPessoaComponent } from './componentes/pessoas/listar-pessoa/listar-pessoa.component';
+import { CriarPessoaComponent } from './componentes/pessoas/criar-pessoa/criar-pessoa.component';
+import { EditarPessoaComponent } from './componentes/pessoas/editar-pessoa/editar-pessoa.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { EditarBairroComponent } from "./componentes/bairros/editar-bairro/edita
     ListarBairroComponent,
     CriarBairroComponent,
     EditarBairroComponent,
+    ListarPessoaComponent,
+    CriarPessoaComponent,
+    EditarPessoaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

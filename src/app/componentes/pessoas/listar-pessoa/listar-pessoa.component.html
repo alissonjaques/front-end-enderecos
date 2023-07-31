@@ -1,0 +1,34 @@
+<div class="ff-inter">
+  <header class="header">
+    <h2>Pessoas</h2>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Código Pessoa</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Login</th>
+        <th>Status</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of listaPessoas">
+        <td>{{pessoa.codigoPessoa}}</td>
+        <td>{{pessoa.nome}} {{pessoa.sobrenome}}</td>
+        <td>{{pessoa.idade}}</td>
+        <td>{{pessoa.login}}</td>
+        <td>{{pessoa.status}}</td>
+        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarPessoa(pessoa.codigoPessoa)" alt="Editar"></td>
+        <td><img src="../../../../assets/imagens/icone-excluir.png" alt="Deletar"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="acoes button-container">
+    <button class="custom-button" (click)="adicionarPessoa()" class="botao">Adicionar</button>
+    <button class="custom-button" (click)="cancelar()" class="botao">Voltar</button>
+  </div>
+</div>
+

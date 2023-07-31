@@ -11,6 +11,9 @@ import { EditarMunicipioComponent } from "./componentes/municipios/editar-munici
 import { ListarBairroComponent } from "./componentes/bairros/listar-bairro/listar-bairro.component";
 import { CriarBairroComponent } from "./componentes/bairros/criar-bairro/criar-bairro.component";
 import { EditarBairroComponent } from "./componentes/bairros/editar-bairro/editar-bairro.component";
+import { ListarPessoaComponent } from "./componentes/pessoas/listar-pessoa/listar-pessoa.component";
+import { CriarPessoaComponent } from "./componentes/pessoas/criar-pessoa/criar-pessoa.component";
+import { EditarPessoaComponent } from "./componentes/pessoas/editar-pessoa/editar-pessoa.component";
 
 const routes: Routes = [
   {
@@ -57,6 +60,18 @@ const routes: Routes = [
   {
     path: "bairros/editarBairro/:codigoBairro",
     component: EditarBairroComponent,
+  },
+  {
+    path: "pessoas",
+    component: ListarPessoaComponent,
+  },
+  {
+    path: "pessoas/criarPessoa",
+    component: CriarPessoaComponent,
+  },
+  {
+    path: "pessoas/editarPessoa/:codigoPessoa",
+    component: EditarPessoaComponent,
   },
   {
     path: "erro",
