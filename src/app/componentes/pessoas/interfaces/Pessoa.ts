@@ -4,5 +4,6 @@ export interface Pessoa {
   sobrenome: string;
   idade: number;
   login: string;
+  senha: string;
   status: number;
 }

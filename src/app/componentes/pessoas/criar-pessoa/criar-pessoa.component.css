@@ -1,0 +1,221 @@
+.criar-pessoas {
+  padding: 2rem 0;
+}
+
+.criar-pessoas form {
+  background: #C4EDFF;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.criar-pessoas form header {
+  color: #154580;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.criar-pessoas form .campo-linha {
+  display: flex;
+  justify-content: space-between;
+  /* Para distribuir os campos lado a lado */
+  margin-bottom: 2rem;
+  /* Espaçamento entre as linhas */
+}
+
+.criar-pessoas form .campo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  /* Espaçamento entre os campos */
+}
+
+.criar-pessoas form .campo label {
+  color: #154580;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.criar-pessoas form .campo .input,
+.criar-pessoas form .campo select {
+  border: none;
+  height: 40px;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  flex: 1;
+}
+
+.criar-pessoas form .campo-nome,
+.criar-pessoas form .campo-sobrenome {
+  flex-basis: 40%;
+}
+
+.criar-pessoas form .campo-idade {
+  flex-basis: 20%;
+}
+
+.criar-pessoas form .campo-login,
+.criar-pessoas form .campo-senha {
+  flex-basis: 40%;
+}
+
+.criar-pessoas form .campo-status {
+  flex-basis: 20%;
+}
+
+.criar-pessoas form .acoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.endereco-container {
+  margin-top: 1rem;
+  /* Espaçamento entre a seção de endereços e o restante do formulário */
+}
+
+.endereco {
+  display: flex;
+  flex-wrap: wrap;
+  /* Para que os campos se ajustem à largura do container */
+  gap: 10px;
+  /* Espaçamento entre os campos do endereço */
+}
+
+.endereco .campo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-linha-endereco {
+  display: flex;
+  justify-content: space-between;
+  /* Para distribuir os campos lado a lado */
+  margin-bottom: 2rem;
+  /* Espaçamento entre as linhas */
+}
+
+.campo-bairro{
+  flex-basis: 20%;
+}
+
+.campo-nomeRua {
+  flex-basis: 80%;
+}
+
+.campo-numero,
+.campo-complemento,
+.campo-cep {
+  flex-basis: 33%;
+}
+
+.botao-adicionar {
+  margin-top: 1rem;
+  /* Espaçamento entre o botão de adicionar e os campos de endereço */
+}
+
+/* Estilos existentes */
+
+.acoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  /* Espaçamento para os botões */
+}
+
+.botao {
+  margin: 5px;
+}
+
+.botao-endereco {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin: 5px;
+}
+
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #4e1a8a;
+  color: #fff;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para os ícones */
+td a {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Exemplo de como adicionar ícones usando font awesome */
+td a::before {
+  font-family: 'Font Awesome';
+  content: '\f044';
+  /* Código do ícone de edição */
+  color: #007bff;
+}
+
+td a::after {
+  font-family: 'Font Awesome';
+  content: '\f067';
+  /* Código do ícone de inclusão */
+  color: #28a745;
+}
+
+td a::hover {
+  font-family: 'Font Awesome';
+  content: '\f1f8';
+  /* Código do ícone de deleção */
+  color: #dc3545;
+}
+
+/* Estilos para os botões */
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  /* Alinha os botões à direita */
+}
+
+.custom-button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #4e1a8a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sem-enderecos {
+  text-align: center;
+  padding: 2rem 0 5rem;
+}

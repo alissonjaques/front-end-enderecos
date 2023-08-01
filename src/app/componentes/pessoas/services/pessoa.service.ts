@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Pessoa } from "../interfaces/Pessoa";
+import { PessoaCompleta } from "../interfaces/PessoaCompleta";
 
 @Injectable({
   providedIn: "root",
@@ -15,8 +16,8 @@ export class PessoaService {
     return this.http.get<Pessoa[]>(this.API);
   }
 
-  criar(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.post<Pessoa>(this.API, pessoa);
+  criar(pessoa: PessoaCompleta): Observable<Pessoa> {
+    return this.http.post<PessoaCompleta>(this.API, pessoa);
   }
 
   editar(pessoa: Pessoa): Observable<Pessoa> {
