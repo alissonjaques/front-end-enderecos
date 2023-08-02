@@ -23,9 +23,9 @@ export class ListarPessoaComponent implements OnInit {
     this.router.navigate(["/pessoas/criarPessoa"]);
   }
 
-  editarPessoa(codigoPessoa: number | undefined) {
-    if (codigoPessoa) {
-      this.router.navigate([`/pessoas/editarPessoa/${codigoPessoa}`]);
+  editarPessoa(login: string | undefined) {
+    if (login) {
+      this.router.navigate([`/pessoas/editarPessoa/${login}`]);
     }
   }
 

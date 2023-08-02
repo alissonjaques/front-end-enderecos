@@ -33,4 +33,9 @@ export class PessoaService {
     const url = `${this.API}?codigoPessoa=${codigoPessoa}`;
     return this.http.get<Pessoa>(url);
   }
+
+  buscarPorLogin(login: string): Observable<PessoaCompleta[]> {
+    const url = `${this.API}?login=${login}`;
+    return this.http.get<PessoaCompleta[]>(url);
+  }
 }

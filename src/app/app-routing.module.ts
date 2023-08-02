@@ -70,7 +70,7 @@ const routes: Routes = [
     component: CriarPessoaComponent,
   },
   {
-    path: "pessoas/editarPessoa/:codigoPessoa",
+    path: "pessoas/editarPessoa/:login",
     component: EditarPessoaComponent,
   },
   {

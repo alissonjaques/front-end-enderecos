@@ -1,10 +1,10 @@
 import { Bairro } from "../../bairros/interfaces/Bairro";
-import { Pessoa } from "./Pessoa";
+import { BairroCompleto } from "../../bairros/interfaces/BairroCompleto";
 
 export interface EnderecoCompleto {
   codigoEndereco?: number;
-  pessoa: Pessoa;
-  bairro: Bairro;
+  codigoPessoa: number;
+  bairro: BairroCompleto;
   nomeRua: string;
   numero: string;
   complemento: string;
