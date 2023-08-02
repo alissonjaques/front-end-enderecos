@@ -14,4 +14,9 @@ export class EnderecoService {
   listar(): Observable<Endereco[]> {
     return this.http.get<Endereco[]>(this.API);
   }
+
+  buscarPorCodigoPessoa(codigoPessoa: number): Observable<Endereco[]> {
+    const url = `${this.API}?codigoPessoa=${codigoPessoa}`;
+    return this.http.get<Endereco[]>(url);
+  }
 }

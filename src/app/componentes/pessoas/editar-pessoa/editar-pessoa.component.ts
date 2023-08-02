@@ -6,6 +6,7 @@ import { PessoaService } from "../services/pessoa.service";
 import { BairroService } from "../../bairros/services/bairro.service";
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { EnderecoService } from "../services/endereco.service";
 
 @Component({
   selector: "app-editar-pessoa",
@@ -14,6 +15,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class EditarPessoaComponent implements OnInit {
   pessoa: PessoaCompleta = {
+    codigoPessoa: 0,
     nome: "",
     sobrenome: "",
     idade: 0,
@@ -39,6 +41,7 @@ export class EditarPessoaComponent implements OnInit {
   constructor(
     private service: PessoaService,
     private bairroService: BairroService,
+    private enderecoService: EnderecoService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -51,15 +54,26 @@ export class EditarPessoaComponent implements OnInit {
     if (login) {
       this.service.buscarPorLogin(login).subscribe((pessoa) => {
         this.pessoa = pessoa[0];
+        if (this.pessoa.codigoPessoa) {
+          this.enderecoService
+            .buscarPorCodigoPessoa(this.pessoa.codigoPessoa)
+            .subscribe((enderecos) => {
+              this.enderecos = enderecos;
+            });
+        }
       });
     }
-    console.log(this.pessoa);
+    console.log(this.pessoa.codigoPessoa);
+
+    console.log(this.enderecos);
   }
 
   adicionarEndereco() {
     this.codigoEndereco++;
+    console.log(this.pessoa.codigoPessoa);
     this.enderecos.push({
       codigoEndereco: this.codigoEndereco,
+      codigoPessoa: this.pessoa.codigoPessoa,
       codigoBairro: this.endereco.codigoBairro,
       nomeRua: this.endereco.nomeRua,
       numero: this.endereco.numero,
@@ -85,6 +99,7 @@ export class EditarPessoaComponent implements OnInit {
     this.pessoa.status = Number(this.pessoa.status);
     this.pessoa.enderecos = this.enderecos.map((endereco) => {
       return {
+        codigoPessoa: endereco.codigoPessoa,
         codigoBairro: endereco.codigoBairro,
         nomeRua: endereco.nomeRua,
         numero: endereco.numero,
