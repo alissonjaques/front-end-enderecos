@@ -3,8 +3,8 @@
 }
 
 .criar-pessoas form {
-  background: #C4EDFF;
-  border: none;
+  background: #FEF7FF;
+  border: 2px solid #a57dff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
 
 .criar-pessoas form .campo .input,
 .criar-pessoas form .campo select {
-  border: none;
+  border: 2px solid #a57dff;
   height: 40px;
   padding: 0.8rem 1rem;
   border-radius: 20px;

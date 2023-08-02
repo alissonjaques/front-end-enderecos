@@ -12,8 +12,8 @@
 }
 
 .criar-ufs form {
-  background: #C4EDFF;
-  border: none;
+  background: #FEF7FF;
+  border: 2px solid #a57dff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,8 @@
 
 .criar-ufs form .campo .input,
 .criar-ufs form .campo select {
-  border: none;
+  border: 2px solid #a57dff;
+  /* Adicionando a borda lilás */
   height: 40px;
   padding: 0.8rem 2rem;
   border-radius: 20px;
