@@ -1,3 +1,4 @@
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Component, OnInit } from "@angular/core";
 import { PessoaCompleta } from "../interfaces/PessoaCompleta";
 import { Bairro } from "../../bairros/interfaces/Bairro";
@@ -6,6 +7,7 @@ import { BairroService } from "../../bairros/services/bairro.service";
 import { NavigationExtras, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Endereco } from "../interfaces/Endereco";
+import { ModalEnderecoComponent } from "../modal-endereco/modal-endereco.component";
 
 @Component({
   selector: "app-criar-pessoa",
@@ -39,12 +41,25 @@ export class CriarPessoaComponent implements OnInit {
   constructor(
     private service: PessoaService,
     private bairroService: BairroService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.bairroService.listar().subscribe((bairros) => {
       this.bairros = bairros;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalEnderecoComponent, {
+      width: "50%",
+      hasBackdrop: true,
+      data: {
+        enderecos: this.enderecos,
+        bairros: this.bairros,
+        CodigoEndereco: this.codigoEndereco,
+      },
     });
   }
 

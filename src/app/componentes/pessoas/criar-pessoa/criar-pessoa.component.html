@@ -44,50 +44,9 @@
         </select>
       </div>
     </div>
-
-    <header class="header">
-      <h2>Endereços</h2>
-    </header>
-
-    <div class="endereco-container">
-      <div>
-        <div class="campo-linha-endereco">
-          <div class="campo campo-bairro">
-            <label for="bairro">Bairro</label>
-            <select class="input" id="bairro" name="bairro" [(ngModel)]="endereco.codigoBairro">
-              <option *ngFor="let bairro of bairros" [value]="bairro.codigoBairro">{{bairro.codigoBairro}} - {{bairro.nome}}</option>
-            </select>
-          </div>
-
-          <div class="campo campo-nomeRua">
-            <label for="nomeRua">Nome da Rua</label>
-            <input required type="text" class="input" id="nomeRua" name="nomeRua" placeholder="Nome da Rua"
-              [(ngModel)]="endereco.nomeRua">
-          </div>
-        </div>
-
-        <div class="campo-linha-endereco">
-          <div class="campo campo-numero">
-            <label for="numero">Número</label>
-            <input type="text" class="input" id="numero" name="numero" placeholder="Número" [(ngModel)]="endereco.numero">
-          </div>
-          <div class="campo campo-complemento">
-            <label for="complemento">Complemento</label>
-            <input type="text" class="input" id="complemento" name="complemento" placeholder="Complemento"
-              [(ngModel)]="endereco.complemento">
-          </div>
-
-          <div class="campo campo-cep">
-            <label for="cep">CEP</label>
-            <input type="text" class="input" id="cep" name="cep" placeholder="CEP" [(ngModel)]="endereco.cep">
-          </div>
-        </div>
-      </div>
-
-      <div class="acoes">
-        <button (click)="adicionarEndereco()" class="botao-endereco botao">Adicionar Endereço</button>
-      </div>
-
+    <div class="acoes">
+      <button (click)="openDialog()" class="botao-endereco botao">Adicionar Endereço</button>
+    </div>
     <div class="ff-inter" *ngIf="enderecos.length > 0, else semEnderecos">
       <table>
         <thead>
@@ -112,7 +71,6 @@
         </tbody>
       </table>
     </div>
-  </div>
 
   <div class="acoes">
     <button (click)="criarPessoa()" class="botao">Salvar</button>
