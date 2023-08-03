@@ -1,42 +1,6 @@
-.endereco {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.endereco .campo {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.campo-linha-endereco {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.campo-bairro {
-  flex-basis: 20%;
-}
-
-.campo-nomeRua {
-  flex-basis: 80%;
-}
-
-.campo-numero,
-.campo-complemento,
-.campo-cep {
-  flex-basis: 33%;
-}
-
-.botao-adicionar {
-  margin-top: 1rem;
-}
-
+/* Estilo para o modal */
 .modal {
-  border: 1px solid #1D1B20;
-  max-width: 100%;
+  border: 1px solid #a57dff;
   display: flex;
   flex-direction: column;
 
@@ -46,27 +10,56 @@
   transform: translate(-50%, -50%);
 
   background-color: white;
-  width: 500px;
-  max-width: 90%;
+  width: 108%;
+  max-width: 800px;
   z-index: 9999;
-
-  h1 {
-    font-size: 32px;
-    padding: 12px;
-  }
-
-  .modal-actions {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-    button {
-      margin: 0 8px;
-      width: 100%;
-    }
-  }
+  padding: 20px;
 }
 
+/* Estilo para os campos e o espaçamento entre eles */
+.endereco .campo {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  margin-bottom: 10px;
+  flex-basis: calc(33.33% - 10px);
+}
+
+form .campo label {
+  color: #154580;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+form .campo .input,
+form .campo select {
+  border: 2px solid #a57dff;
+  height: 40px;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  flex: 1;
+}
+
+.campo-linha-endereco {
+  display: flex;
+}
+
+/* Estilo para o botão de adicionar endereço */
+.botao-endereco {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Estilo para centralizar os campos e o botão */
+.endereco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centralizar o conteúdo na direção horizontal */
+}
+
+/* Estilo para o overlay */
 .overlay {
   background: #000;
   height: 100vh;
