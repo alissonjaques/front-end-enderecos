@@ -9,6 +9,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { EnderecoService } from "../services/endereco.service";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
+import { ModalEnderecoComponent } from "../modal-endereco/modal-endereco.component";
 
 @Component({
   selector: "app-editar-pessoa",
@@ -66,9 +67,18 @@ export class EditarPessoaComponent implements OnInit {
         }
       });
     }
-    console.log(this.pessoa.codigoPessoa);
+  }
 
-    console.log(this.enderecos);
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalEnderecoComponent, {
+      width: "50%",
+      hasBackdrop: true,
+      data: {
+        enderecos: this.enderecos,
+        bairros: this.bairros,
+        CodigoEndereco: this.codigoEndereco,
+      },
+    });
   }
 
   adicionarEndereco() {
