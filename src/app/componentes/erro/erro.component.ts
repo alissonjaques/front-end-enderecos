@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Erro } from "./Erro";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: "app-erro",
@@ -14,20 +15,17 @@ export class ErroComponent implements OnInit {
     url: "",
   };
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.erro.mensagem = decodeURIComponent(params["mensagem"]).replace(
-        "<br>",
-        " "
-      );
-      this.erro.status = params["status"];
-      this.erro.url = decodeURIComponent(params["url"]);
-    });
+  constructor(
+    private route: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) {
+    if (this.data && this.data.mensagem) {
+      this.erro.mensagem = decodeURIComponent(this.data.mensagem);
+    }
+    if (this.data && this.data.status) {
+      this.erro.status = this.data.status;
+    }
   }
 
-  ok() {
-    this.router.navigate([this.erro.url]);
-  }
+  ngOnInit(): void {}
 }

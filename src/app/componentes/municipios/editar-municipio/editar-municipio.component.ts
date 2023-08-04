@@ -3,8 +3,10 @@ import { Municipio } from "../interfaces/Municipio";
 import { Uf } from "../../ufs/interfaces/Uf";
 import { MunicipioService } from "../services/municipio.service";
 import { UfService } from "../../ufs/services/uf.service";
-import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-editar-municipio",
@@ -24,7 +26,8 @@ export class EditarMunicipioComponent implements OnInit {
     private service: MunicipioService,
     private ufService: UfService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -49,11 +52,7 @@ export class EditarMunicipioComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/municipios/editarMunicipio/${this.municipio.codigoMunicipio}`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

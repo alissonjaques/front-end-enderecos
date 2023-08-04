@@ -1,8 +1,8 @@
 <section class="container ff-inter">
   <div class="modal">
-    <p format_align_justify>{{erro.mensagem}} Status: {{erro.status}}</p>
+    <p class="p" format_align_justify>{{erro.mensagem}} <br><br>Status: {{erro.status}}</p>
     <div class="acoes">
-      <button class="botao botao-ok" (click)="ok()">Ok</button>
+      <button class="botao botao-ok" mat-dialog-close mat-flat-button>Ok</button>
     </div>
   </div>
   <div class="overlay"></div>

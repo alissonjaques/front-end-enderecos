@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Uf } from "../interfaces/Uf";
 import { UfService } from "../services/uf.service";
-import { NavigationExtras, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Siglas } from "src/app/utils/Siglas";
+import { MatDialog } from "@angular/material/dialog";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
 
 @Component({
   selector: "app-criar-uf",
@@ -20,7 +22,11 @@ export class CriarUfComponent implements OnInit {
 
   siglas = Siglas;
 
-  constructor(private service: UfService, private router: Router) {}
+  constructor(
+    private service: UfService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,11 +39,7 @@ export class CriarUfComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/ufs/criarUf`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

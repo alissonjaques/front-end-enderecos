@@ -2,9 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { MunicipioService } from "../services/municipio.service";
 import { Municipio } from "../interfaces/Municipio";
 import { HttpErrorResponse } from "@angular/common/http";
-import { NavigationExtras, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { Uf } from "../../ufs/interfaces/Uf";
 import { UfService } from "../../ufs/services/uf.service";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-criar-municipio",
@@ -23,7 +25,8 @@ export class CriarMunicipioComponent implements OnInit {
   constructor(
     private service: MunicipioService,
     private ufService: UfService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -42,11 +45,7 @@ export class CriarMunicipioComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/municipios/criarMunicipio`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

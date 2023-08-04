@@ -1,13 +1,14 @@
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { Component, OnInit } from "@angular/core";
 import { PessoaCompleta } from "../interfaces/PessoaCompleta";
 import { Bairro } from "../../bairros/interfaces/Bairro";
 import { PessoaService } from "../services/pessoa.service";
 import { BairroService } from "../../bairros/services/bairro.service";
-import { NavigationExtras, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Endereco } from "../interfaces/Endereco";
 import { ModalEnderecoComponent } from "../modal-endereco/modal-endereco.component";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
 
 @Component({
   selector: "app-criar-pessoa",
@@ -73,7 +74,6 @@ export class CriarPessoaComponent implements OnInit {
       complemento: this.endereco.complemento,
       cep: this.endereco.cep,
     });
-    console.log(this.enderecos);
   }
 
   removerEndereco(codigoEndereco: number | undefined) {
@@ -106,11 +106,7 @@ export class CriarPessoaComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/pessoas/criarPessoa`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

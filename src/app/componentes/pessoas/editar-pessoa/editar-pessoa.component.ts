@@ -4,9 +4,11 @@ import { Endereco } from "../interfaces/Endereco";
 import { Bairro } from "../../bairros/interfaces/Bairro";
 import { PessoaService } from "../services/pessoa.service";
 import { BairroService } from "../../bairros/services/bairro.service";
-import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { EnderecoService } from "../services/endereco.service";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-editar-pessoa",
@@ -43,7 +45,8 @@ export class EditarPessoaComponent implements OnInit {
     private bairroService: BairroService,
     private enderecoService: EnderecoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -80,7 +83,6 @@ export class EditarPessoaComponent implements OnInit {
       complemento: this.endereco.complemento,
       cep: this.endereco.cep,
     });
-    console.log(this.enderecos);
   }
 
   removerEndereco(codigoEndereco: number | undefined) {
@@ -114,11 +116,7 @@ export class EditarPessoaComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/pessoas/editarPessoa/${this.pessoa.login}`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

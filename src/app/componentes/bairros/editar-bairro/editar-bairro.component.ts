@@ -3,8 +3,10 @@ import { Bairro } from "../interfaces/Bairro";
 import { Municipio } from "../../municipios/interfaces/Municipio";
 import { MunicipioService } from "../../municipios/services/municipio.service";
 import { BairroService } from "../services/bairro.service";
-import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { openErrorDialog } from "src/app/utils/openErrorDialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-editar-bairro",
@@ -24,7 +26,8 @@ export class EditarBairroComponent implements OnInit {
     private service: BairroService,
     private municipioService: MunicipioService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -49,11 +52,7 @@ export class EditarBairroComponent implements OnInit {
       (error: HttpErrorResponse) => {
         const mensagem = encodeURIComponent(error.error.mensagem);
         const status = encodeURIComponent(error.error.status);
-        const url = `/bairros/editarBairro/${this.bairro.codigoBairro}`;
-        const parametros: NavigationExtras = {
-          queryParams: { mensagem: mensagem, status: status, url: url },
-        };
-        this.router.navigate([`/erro`], parametros);
+        openErrorDialog(this.dialog, mensagem, status);
       }
     );
   }

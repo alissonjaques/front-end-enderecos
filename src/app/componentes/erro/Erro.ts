@@ -1,5 +1,5 @@
-export interface Erro{
-  mensagem: string,
-  status: number,
-  url: string
+export interface Erro {
+  mensagem: string;
+  status: number;
+  url?: string;
 }
