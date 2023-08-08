@@ -5,7 +5,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **Front-End da API de Endereços**
-| :label: Tecnologias | Typescript, CSS, HTML5, Angular 14
+| :label: Tecnologias | Typescript, CSS, HTML5, Angular 14, Angular Material, Front-End
 
 ## Servidor de Desenvolvimento
 
