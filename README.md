@@ -2,6 +2,11 @@
 
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 14.0.0.
 
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Front-End da API de Endereços**
+| :label: Tecnologias | Typescript, CSS, HTML5, Angular 14
+
 ## Servidor de Desenvolvimento
 
 Execute `ng serve` para subir o servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
