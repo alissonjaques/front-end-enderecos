@@ -34,7 +34,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Back-End
 
-O Front-End da aplicação pode ser acessado nesse link: https://github.com/alissonjaques/api-enderecos
+O Back-End da aplicação pode ser acessado nesse link: https://github.com/alissonjaques/api-enderecos
 
 ##
 
