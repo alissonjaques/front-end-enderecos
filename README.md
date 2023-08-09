@@ -34,7 +34,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Imagens da aplicação funcionando
 
-![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-enderecos/home-frontend.PNG)
+![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-enderecos/home-frontend.PNG#vitrinedev)
 
 ![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-enderecos/cadastro-pessoa.PNG#vitrinedev)
 
