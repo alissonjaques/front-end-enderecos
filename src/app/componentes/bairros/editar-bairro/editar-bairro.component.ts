@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Bairro } from "../interfaces/Bairro";
 import { Municipio } from "../../municipios/interfaces/Municipio";
 import { MunicipioService } from "../../municipios/services/municipio.service";
 import { BairroService } from "../services/bairro.service";
@@ -7,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-editar-bairro",
@@ -14,12 +14,7 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./editar-bairro.component.css"],
 })
 export class EditarBairroComponent implements OnInit {
-  bairro: Bairro = {
-    codigoMunicipio: 0,
-    nome: "",
-    status: 0,
-  };
-
+  formulario!: FormGroup;
   listaMunicipios: Municipio[] = [];
 
   constructor(
@@ -27,37 +22,63 @@ export class EditarBairroComponent implements OnInit {
     private municipioService: MunicipioService,
     private router: Router,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.municipioService.listar().subscribe((listaMunicipios) => {
+      this.listaMunicipios = listaMunicipios;
+    });
     const codigoBairro = this.route.snapshot.paramMap.get("codigoBairro");
     this.service
       .buscarPorCodigoBairro(parseInt(codigoBairro!))
       .subscribe((bairro) => {
-        this.bairro = bairro;
+        console.log(bairro);
+        this.formulario = this.formBuilder.group({
+          codigoBairro: [bairro.codigoBairro],
+          codigoMunicipio: [bairro.codigoMunicipio],
+          nome: [
+            bairro.nome,
+            Validators.compose([
+              Validators.required,
+              Validators.minLength(3),
+              Validators.maxLength(60),
+              Validators.pattern(/(.|\s)*\S(.|\s)*/),
+            ]),
+          ],
+          status: [bairro.status],
+        });
       });
-    this.municipioService.listar().subscribe((listaMunicipios) => {
-      this.listaMunicipios = listaMunicipios;
-    });
   }
 
   editarBairro() {
-    this.bairro.status = Number(this.bairro.status);
-    this.bairro.codigoMunicipio = Number(this.bairro.codigoMunicipio);
-    this.service.editar(this.bairro).subscribe(
-      () => {
-        this.router.navigate(["/bairros"]);
-      },
-      (error: HttpErrorResponse) => {
-        const mensagem = encodeURIComponent(error.error.mensagem);
-        const status = encodeURIComponent(error.error.status);
-        openErrorDialog(this.dialog, mensagem, status);
-      }
-    );
+    if (this.formulario.valid) {
+      this.formulario.value.status = Number(this.formulario.value.status);
+      this.formulario.value.codigoMunicipio = Number(
+        this.formulario.value.codigoMunicipio
+      );
+      this.service.editar(this.formulario.value).subscribe(
+        () => {
+          this.router.navigate(["/bairros"]);
+        },
+        (error: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(error.error.mensagem);
+          const status = encodeURIComponent(error.error.status);
+          openErrorDialog(this.dialog, mensagem, status);
+        }
+      );
+    }
   }
 
   cancelar() {
     this.router.navigate(["/bairros"]);
+  }
+
+  habilitarBotao(): string {
+    if (this.formulario.valid) {
+      return "botao";
+    }
+    return "botao__desabilitado";
   }
 }

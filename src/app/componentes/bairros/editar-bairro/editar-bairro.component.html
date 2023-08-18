@@ -1,5 +1,5 @@
 <section class="container editar-bairros ff-inter">
-  <form>
+  <form [formGroup]="formulario" *ngIf="formulario">
     <header class="header">
       <h2>Edição de Bairro</h2>
     </header>
@@ -7,28 +7,88 @@
     <div class="campo-linha">
       <div class="campo campo-nome">
         <label for="nome">Nome</label>
-        <input type="textarea" class="input" id="nome" name="nome" placeholder="Digite o nome"
-          [(ngModel)]="bairro.nome">
+        <input
+          type="textarea"
+          class="input"
+          id="nome"
+          formControlName="nome"
+          placeholder="Digite o nome"
+        />
       </div>
 
       <div class="campo campo-codigoMunicipio">
         <label for="codigoMunicipio">Município</label>
-        <select class="input" id="codigoMunicipio" name="codigoMunicipio" [(ngModel)]="bairro.codigoMunicipio">
-          <option *ngFor="let municipio of listaMunicipios" [value]="municipio.codigoMunicipio">{{municipio.codigoMunicipio}} - {{municipio.nome}}</option>
+        <select
+          class="input"
+          id="codigoMunicipio"
+          formControlName="codigoMunicipio"
+        >
+          <option
+            *ngFor="let municipio of listaMunicipios"
+            [value]="municipio.codigoMunicipio"
+          >
+            {{ municipio.codigoMunicipio }} - {{ municipio.nome }}
+          </option>
         </select>
       </div>
 
       <div class="campo campo-status">
         <label for="status">Status</label>
-        <select class="input" id="status" name="status" [(ngModel)]="bairro.status">
+        <select class="input" id="status" formControlName="status">
           <option value="1">Ativo</option>
           <option value="2">Inativo</option>
         </select>
       </div>
     </div>
 
+    <div
+      class="mensagem__erro campo-linha"
+      *ngIf="!formulario.valid && formulario.get('nome')?.touched"
+    >
+      <div class="campo campo-nome">
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('required') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome é obrigatório!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('minlength') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome deve conter no mínimo 3 caracteres!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('maxlength') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome deve conter no máximo 60 caracteres!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('pattern') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome não deve ser apenas espaços em branco!
+        </div>
+      </div>
+    </div>
+
     <div class="acoes">
-      <button (click)="editarBairro()" class="botao">Salvar</button>
+      <button
+        [disabled]="!formulario.valid"
+        (click)="editarBairro()"
+        [ngClass]="habilitarBotao()"
+      >
+        Salvar
+      </button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>
