@@ -51,12 +51,10 @@
 .criar-ufs form .campo .input,
 .criar-ufs form .campo select {
   border: 2px solid #a57dff;
-  /* Adicionando a borda lilás */
   height: 40px;
   padding: 0.8rem 2rem;
   border-radius: 20px;
   flex: 1;
-  /* Ajustado para flex: 1 */
   margin: 0.5rem 4;
   margin-right: 40px;
 }

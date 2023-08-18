@@ -3,7 +3,7 @@
 }
 
 .editar-pessoas form {
-  background: #FEF7FF;
+  background: #fef7ff;
   border: 2px solid #a57dff;
   border-radius: 20px;
   display: flex;
@@ -20,9 +20,7 @@
 .editar-pessoas form .campo-linha {
   display: flex;
   justify-content: space-between;
-  /* Para distribuir os campos lado a lado */
   margin-bottom: 2rem;
-  /* Espaçamento entre as linhas */
 }
 
 .editar-pessoas form .campo {
@@ -30,7 +28,6 @@
   display: flex;
   flex-direction: column;
   margin-right: 10px;
-  /* Espaçamento entre os campos */
 }
 
 .editar-pessoas form .campo label {
@@ -74,15 +71,12 @@
 
 .endereco-container {
   margin-top: 1rem;
-  /* Espaçamento entre a seção de endereços e o restante do formulário */
 }
 
 .endereco {
   display: flex;
   flex-wrap: wrap;
-  /* Para que os campos se ajustem à largura do container */
   gap: 10px;
-  /* Espaçamento entre os campos do endereço */
 }
 
 .endereco .campo {
@@ -94,9 +88,7 @@
 .campo-linha-endereco {
   display: flex;
   justify-content: space-between;
-  /* Para distribuir os campos lado a lado */
   margin-bottom: 2rem;
-  /* Espaçamento entre as linhas */
 }
 
 .campo-bairro {
@@ -115,16 +107,12 @@
 
 .botao-adicionar {
   margin-top: 1rem;
-  /* Espaçamento entre o botão de adicionar e os campos de endereço */
 }
-
-/* Estilos existentes */
 
 .acoes {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  /* Espaçamento para os botões */
 }
 
 .botao {
@@ -138,7 +126,6 @@
   margin: 5px;
 }
 
-/* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
@@ -168,41 +155,34 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Estilos para os ícones */
 td a {
   display: inline-block;
   width: 24px;
   height: 24px;
 }
 
-/* Exemplo de como adicionar ícones usando font awesome */
 td a::before {
-  font-family: 'Font Awesome';
-  content: '\f044';
-  /* Código do ícone de edição */
+  font-family: "Font Awesome";
+  content: "\f044";
   color: #007bff;
 }
 
 td a::after {
-  font-family: 'Font Awesome';
-  content: '\f067';
-  /* Código do ícone de inclusão */
+  font-family: "Font Awesome";
+  content: "\f067";
   color: #28a745;
 }
 
 td a::hover {
-  font-family: 'Font Awesome';
-  content: '\f1f8';
-  /* Código do ícone de deleção */
+  font-family: "Font Awesome";
+  content: "\f1f8";
   color: #dc3545;
 }
 
-/* Estilos para os botões */
 .button-container {
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
-  /* Alinha os botões à direita */
 }
 
 .custom-button {
