@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { Uf } from "../interfaces/Uf";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { UfService } from "../services/uf.service";
 import { Siglas } from "src/app/utils/Siglas";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-editar-uf",
@@ -13,44 +13,61 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./editar-uf.component.css"],
 })
 export class EditarUfComponent implements OnInit {
-  uf: Uf = {
-    codigoUF: 0,
-    sigla: "",
-    nome: "",
-    status: 0,
-  };
-
+  formulario!: FormGroup;
   siglas = Siglas;
 
   constructor(
     private service: UfService,
     private router: Router,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     const codigoUF = this.route.snapshot.paramMap.get("codigoUF");
     this.service.buscarPorCodigoUF(parseInt(codigoUF!)).subscribe((uf) => {
-      this.uf = uf;
+      this.formulario = this.formBuilder.group({
+        codigoUF: [uf.codigoUF],
+        sigla: [uf.sigla],
+        nome: [
+          uf.nome,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(60),
+            Validators.pattern(/(.|\s)*\S(.|\s)*/),
+          ]),
+        ],
+        status: [uf.status],
+      });
     });
   }
 
   editarUf() {
-    this.uf.status = Number(this.uf.status);
-    this.service.editar(this.uf).subscribe(
-      () => {
-        this.router.navigate(["/ufs"]);
-      },
-      (error: HttpErrorResponse) => {
-        const mensagem = encodeURIComponent(error.error.mensagem);
-        const status = encodeURIComponent(error.error.status);
-        openErrorDialog(this.dialog, mensagem, status);
-      }
-    );
+    if (this.formulario.valid) {
+      this.formulario.value.status = Number(this.formulario.value.status);
+      this.service.editar(this.formulario.value).subscribe(
+        () => {
+          this.router.navigate(["/ufs"]);
+        },
+        (error: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(error.error.mensagem);
+          const status = encodeURIComponent(error.error.status);
+          openErrorDialog(this.dialog, mensagem, status);
+        }
+      );
+    }
   }
 
   cancelar() {
     this.router.navigate(["/ufs"]);
+  }
+
+  habilitarBotao(): string {
+    if (this.formulario.valid) {
+      return "botao";
+    }
+    return "botao__desabilitado";
   }
 }
