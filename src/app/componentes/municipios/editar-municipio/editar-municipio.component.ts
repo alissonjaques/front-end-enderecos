@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-editar-municipio",
@@ -14,12 +15,7 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./editar-municipio.component.css"],
 })
 export class EditarMunicipioComponent implements OnInit {
-  municipio: Municipio = {
-    codigoUF: 0,
-    nome: "",
-    status: 0,
-  };
-
+  formulario!: FormGroup;
   listaUfs: Uf[] = [];
 
   constructor(
@@ -27,7 +23,8 @@ export class EditarMunicipioComponent implements OnInit {
     private ufService: UfService,
     private router: Router,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +32,20 @@ export class EditarMunicipioComponent implements OnInit {
     this.service
       .buscarPorCodigoMunicipio(parseInt(codigoMunicipio!))
       .subscribe((municipio) => {
-        this.municipio = municipio;
+        this.formulario = this.formBuilder.group({
+          codigoMunicipio: [municipio.codigoMunicipio],
+          codigoUF: [municipio.codigoUF],
+          nome: [
+            municipio.nome,
+            Validators.compose([
+              Validators.required,
+              Validators.minLength(3),
+              Validators.maxLength(60),
+              Validators.pattern(/(.|\s)*\S(.|\s)*/),
+            ]),
+          ],
+          status: [municipio.status],
+        });
       });
     this.ufService.listar().subscribe((listaUfs) => {
       this.listaUfs = listaUfs;
@@ -43,21 +53,30 @@ export class EditarMunicipioComponent implements OnInit {
   }
 
   editarMunicipio() {
-    this.municipio.status = Number(this.municipio.status);
-    this.municipio.codigoUF = Number(this.municipio.codigoUF);
-    this.service.editar(this.municipio).subscribe(
-      () => {
-        this.router.navigate(["/municipios"]);
-      },
-      (error: HttpErrorResponse) => {
-        const mensagem = encodeURIComponent(error.error.mensagem);
-        const status = encodeURIComponent(error.error.status);
-        openErrorDialog(this.dialog, mensagem, status);
-      }
-    );
+    if (this.formulario.valid) {
+      this.formulario.value.status = Number(this.formulario.value.status);
+      this.formulario.value.codigoUF = Number(this.formulario.value.codigoUF);
+      this.service.editar(this.formulario.value).subscribe(
+        () => {
+          this.router.navigate(["/municipios"]);
+        },
+        (error: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(error.error.mensagem);
+          const status = encodeURIComponent(error.error.status);
+          openErrorDialog(this.dialog, mensagem, status);
+        }
+      );
+    }
   }
 
   cancelar() {
     this.router.navigate(["/municipios"]);
+  }
+
+  habilitarBotao(): string {
+    if (this.formulario.valid) {
+      return "botao";
+    }
+    return "botao__desabilitado";
   }
 }
