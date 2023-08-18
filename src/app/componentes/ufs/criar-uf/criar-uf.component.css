@@ -5,6 +5,14 @@
 
 .botao {
   margin: 5px;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.botao__desabilitado {
+  margin: 5px;
+  margin-top: 5px;
+  width: 200px;
 }
 
 .criar-ufs {
@@ -12,7 +20,7 @@
 }
 
 .criar-ufs form {
-  background: #FEF7FF;
+  background: #fef7ff;
   border: 2px solid #a57dff;
   border-radius: 20px;
   display: flex;
@@ -69,4 +77,11 @@
 .criar-ufs form .campo-status {
   flex-basis: 20%;
   margin-left: 5px;
+}
+
+.mensagem__erro {
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  margin-bottom: 20px;
 }

@@ -1,5 +1,5 @@
 <section class="container criar-ufs ff-inter">
-  <form>
+  <form [formGroup]="formulario">
     <header class="header">
       <h2>Cadastro de Unidade Federativa</h2>
     </header>
@@ -7,27 +7,106 @@
     <div class="campo-linha">
       <div class="campo campo-nome">
         <label for="nome">Nome</label>
-        <input type="textarea" class="input" id="nome" name="nome" placeholder="Digite o nome" [(ngModel)]="uf.nome">
+        <input
+          type="textarea"
+          class="input"
+          id="nome"
+          formControlName="nome"
+          placeholder="Digite o nome"
+        />
       </div>
 
       <div class="campo campo-sigla">
         <label for="sigla">Sigla</label>
-        <select class="input" id="sigla" name="sigla" [(ngModel)]="uf.sigla">
-          <option *ngFor="let sigla of siglas" [value]="sigla.sigla">{{sigla.sigla}} - {{sigla.nome}}</option>
+        <select class="input" id="sigla" formControlName="sigla">
+          <option *ngFor="let sigla of siglas" [value]="sigla.sigla">
+            {{ sigla.sigla }} - {{ sigla.nome }}
+          </option>
         </select>
       </div>
 
       <div class="campo campo-status">
         <label for="status">Status</label>
-        <select class="input" id="status" name="status" [(ngModel)]="uf.status">
+        <select class="input" id="status" formControlName="status">
           <option value="1">Ativo</option>
           <option value="2">Inativo</option>
         </select>
       </div>
     </div>
 
+    <div
+      class="mensagem__erro campo-linha"
+      *ngIf="
+        !formulario.valid &&
+        (formulario.get('nome')?.touched ||
+          formulario.get('sigla')?.touched ||
+          formulario.get('status')?.touched)
+      "
+    >
+      <div class="campo campo-nome">
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('required') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome é obrigatório!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('minlength') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome deve conter no mínimo 3 caracteres!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('maxlength') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome deve conter no máximo 60 caracteres!
+        </div>
+        <div
+          *ngIf="
+            formulario.get('nome')?.hasError('pattern') &&
+            formulario.get('nome')?.touched
+          "
+        >
+          O campo nome não deve ser apenas espaços em branco!
+        </div>
+      </div>
+      <div class="campo campo-sigla">
+        <div
+          *ngIf="
+            formulario.get('sigla')?.hasError('required') &&
+            formulario.get('sigla')?.touched
+          "
+        >
+          O campo sigla é obrigatório!
+        </div>
+      </div>
+      <div class="campo campo-status">
+        <div
+          *ngIf="
+            formulario.get('status')?.hasError('required') &&
+            formulario.get('status')?.touched
+          "
+        >
+          O campo status é obrigatório!
+        </div>
+      </div>
+    </div>
+
     <div class="acoes">
-      <button (click)="criarUf()" class="botao">Salvar</button>
+      <button
+        [disabled]="!formulario.valid"
+        (click)="criarUf()"
+        [ngClass]="habilitarBotao()"
+      >
+        Salvar
+      </button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>
