@@ -37,7 +37,7 @@ export class CriarBairroComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(60),
+          Validators.maxLength(256),
           Validators.pattern(/(.|\s)*\S(.|\s)*/),
         ]),
       ],

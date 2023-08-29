@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { Endereco } from "../interfaces/Endereco";
 import { Bairro } from "../../bairros/interfaces/Bairro";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-modal-endereco",
@@ -12,16 +13,12 @@ export class ModalEnderecoComponent implements OnInit {
   enderecos: Endereco[] = [];
   bairros: Bairro[] = [];
   codigoEndereco: number = 0;
+  formulario!: FormGroup;
 
-  endereco: Endereco = {
-    codigoBairro: 0,
-    nomeRua: "",
-    numero: "",
-    complemento: "",
-    cep: "",
-  };
-
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private formBuilder: FormBuilder
+  ) {
     if (this.data && this.data.enderecos) {
       this.enderecos = this.data.enderecos;
     }
@@ -31,18 +28,56 @@ export class ModalEnderecoComponent implements OnInit {
     if (this.data && this.data.codigoEndereco) {
       this.codigoEndereco = this.data.codigoEndereco;
     }
+    this.formulario = this.formBuilder.group({
+      codigoBairro: ["", Validators.compose([Validators.required])],
+      nomeRua: [
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(256),
+          Validators.pattern(/(.|\s)*\S(.|\s)*/), // valida se a string não contém apenas espaços vazios
+        ]),
+      ],
+      numero: [
+        "",
+        Validators.compose([
+          Validators.pattern(/^[1-9]\d*$/), // valida se a string representa um número inteiro positivo
+          Validators.compose([Validators.required]),
+          Validators.maxLength(10),
+        ]),
+      ],
+      complemento: [
+        "",
+        Validators.compose([
+          Validators.minLength(3),
+          Validators.maxLength(20),
+          Validators.required,
+        ]),
+      ],
+      cep: [
+        "",
+        Validators.compose([
+          Validators.pattern(/^\d{5}-?\d{3}$/), // valida se a string representa um CEP válido
+          Validators.required,
+          Validators.maxLength(10),
+        ]),
+      ],
+    });
   }
 
   adicionarEndereco() {
-    this.codigoEndereco++;
-    this.enderecos.push({
-      codigoEndereco: this.codigoEndereco,
-      codigoBairro: this.endereco.codigoBairro,
-      nomeRua: this.endereco.nomeRua,
-      numero: this.endereco.numero,
-      complemento: this.endereco.complemento,
-      cep: this.endereco.cep,
-    });
+    if (this.formulario.valid) {
+      this.codigoEndereco++;
+      this.enderecos.push({
+        codigoEndereco: this.codigoEndereco,
+        codigoBairro: this.formulario.value.codigoBairro,
+        nomeRua: this.formulario.value.nomeRua,
+        numero: this.formulario.value.numero,
+        complemento: this.formulario.value.complemento,
+        cep: this.formulario.value.cep,
+      });
+    }
   }
 
   ngOnInit(): void {}

@@ -44,8 +44,9 @@ form .campo select {
 }
 
 .botao-endereco {
-  margin-top: 20px;
-  width: 100%;
+  margin: 5px;
+  margin-top: 5px;
+  width: 200px;
 }
 
 .endereco {
@@ -63,4 +64,11 @@ form .campo select {
   top: 0;
   width: 100vw;
   z-index: 10;
+}
+
+.mensagem__erro {
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  margin-bottom: 20px;
 }
