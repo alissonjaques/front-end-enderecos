@@ -56,16 +56,16 @@ export class EditarMunicipioComponent implements OnInit {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.formulario.value.codigoUF = Number(this.formulario.value.codigoUF);
-      this.service.editar(this.formulario.value).subscribe(
-        () => {
+      this.service.editar(this.formulario.value).subscribe({
+        next: () => {
           this.router.navigate(["/municipios"]);
         },
-        (error: HttpErrorResponse) => {
-          const mensagem = encodeURIComponent(error.error.mensagem);
-          const status = encodeURIComponent(error.error.status);
+        error: (erro: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(erro.error.mensagem);
+          const status = encodeURIComponent(erro.error.status);
           openErrorDialog(this.dialog, mensagem, status);
-        }
-      );
+        },
+      });
     }
   }
 

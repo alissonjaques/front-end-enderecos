@@ -51,16 +51,16 @@ export class CriarBairroComponent implements OnInit {
       this.formulario.value.codigoMunicipio = Number(
         this.formulario.value.codigoMunicipio
       );
-      this.service.criar(this.formulario.value).subscribe(
-        () => {
+      this.service.criar(this.formulario.value).subscribe({
+        next: () => {
           this.router.navigate(["/bairros"]);
         },
-        (error: HttpErrorResponse) => {
-          const mensagem = encodeURIComponent(error.error.mensagem);
-          const status = encodeURIComponent(error.error.status);
+        error: (erro: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(erro.error.mensagem);
+          const status = encodeURIComponent(erro.error.status);
           openErrorDialog(this.dialog, mensagem, status);
-        }
-      );
+        },
+      });
     }
   }
 
