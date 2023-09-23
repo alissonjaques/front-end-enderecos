@@ -44,7 +44,7 @@ export class EditarUfComponent implements OnInit {
     });
   }
 
-  editarUf() {
+  editarUf(): void {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.service.editar(this.formulario.value).subscribe({
@@ -60,7 +60,7 @@ export class EditarUfComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/ufs"]);
   }
 

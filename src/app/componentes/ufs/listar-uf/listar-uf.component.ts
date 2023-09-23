@@ -31,17 +31,17 @@ export class ListarUfComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  adicionarUf() {
+  adicionarUf(): void {
     this.router.navigate(["/ufs/criarUf"]);
   }
 
-  editarUf(codigoUF: number | undefined) {
+  editarUf(codigoUF: number | undefined): void {
     if (codigoUF) {
       this.router.navigate([`/ufs/editarUf/${codigoUF}`]);
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/menu"]);
   }
 }

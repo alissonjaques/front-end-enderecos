@@ -40,7 +40,7 @@ export class CriarUfComponent implements OnInit {
     });
   }
 
-  criarUf() {
+  criarUf(): void {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.service.criar(this.formulario.value).subscribe({
@@ -56,7 +56,7 @@ export class CriarUfComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/ufs"]);
   }
 
