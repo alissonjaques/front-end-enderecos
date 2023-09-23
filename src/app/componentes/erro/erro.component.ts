@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { Erro } from "./Erro";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 

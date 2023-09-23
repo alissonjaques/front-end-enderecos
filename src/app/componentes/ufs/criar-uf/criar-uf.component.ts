@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Uf } from "../interfaces/Uf";
 import { UfService } from "../services/uf.service";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";

@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Municipio } from "../interfaces/Municipio";
 import { Uf } from "../../ufs/interfaces/Uf";
 import { MunicipioService } from "../services/municipio.service";
 import { UfService } from "../../ufs/services/uf.service";

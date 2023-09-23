@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { Endereco } from "../interfaces/Endereco";
 import { Bairro } from "../../bairros/interfaces/Bairro";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";

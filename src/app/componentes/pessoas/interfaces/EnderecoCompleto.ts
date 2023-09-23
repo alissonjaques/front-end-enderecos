@@ -1,4 +1,3 @@
-import { Bairro } from "../../bairros/interfaces/Bairro";
 import { BairroCompleto } from "../../bairros/interfaces/BairroCompleto";
 
 export interface EnderecoCompleto {
