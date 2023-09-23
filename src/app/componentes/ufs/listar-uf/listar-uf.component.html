@@ -14,18 +14,33 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let uf of listaUfs">
-        <td>{{uf.codigoUF}}</td>
-        <td>{{uf.sigla}}</td>
-        <td>{{uf.nome}}</td>
-        <td>{{uf.status}}</td>
-        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarUf(uf.codigoUF)" alt="Editar"></td>
-        <td><img src="../../../../assets/imagens/icone-excluir.png" alt="Deletar"></td>
+      <tr *ngFor="let uf of listaUfs$ | async as listaUfs">
+        <td>{{ uf.codigoUF }}</td>
+        <td>{{ uf.sigla }}</td>
+        <td>{{ uf.nome }}</td>
+        <td>{{ uf.status }}</td>
+        <td>
+          <img
+            src="../../../../assets/imagens/icone-editar.png"
+            (click)="editarUf(uf.codigoUF)"
+            alt="Editar"
+          />
+        </td>
+        <td>
+          <img
+            src="../../../../assets/imagens/icone-excluir.png"
+            alt="Deletar"
+          />
+        </td>
       </tr>
     </tbody>
   </table>
   <div class="acoes button-container">
-    <button class="custom-button" (click)="adicionarUf()" class="botao">Adicionar</button>
-    <button class="custom-button" (click)="cancelar()" class="botao">Voltar</button>
+    <button class="custom-button" (click)="adicionarUf()" class="botao">
+      Adicionar
+    </button>
+    <button class="custom-button" (click)="cancelar()" class="botao">
+      Voltar
+    </button>
   </div>
 </div>
