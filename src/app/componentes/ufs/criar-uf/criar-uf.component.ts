@@ -43,16 +43,16 @@ export class CriarUfComponent implements OnInit {
   criarUf() {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
-      this.service.criar(this.formulario.value).subscribe(
-        () => {
+      this.service.criar(this.formulario.value).subscribe({
+        next: () => {
           this.router.navigate(["/ufs"]);
         },
-        (error: HttpErrorResponse) => {
-          const mensagem = encodeURIComponent(error.error.mensagem);
-          const status = encodeURIComponent(error.error.status);
+        error: (erro: HttpErrorResponse) => {
+          const mensagem = encodeURIComponent(erro.error.mensagem);
+          const status = encodeURIComponent(erro.error.status);
           openErrorDialog(this.dialog, mensagem, status);
-        }
-      );
+        },
+      });
     }
   }
 

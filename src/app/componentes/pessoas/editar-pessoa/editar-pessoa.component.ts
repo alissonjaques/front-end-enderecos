@@ -103,16 +103,16 @@ export class EditarPessoaComponent implements OnInit {
   editarPessoa() {
     this.pessoa.status = Number(this.pessoa.status);
     this.pessoa.enderecos = this.enderecos;
-    this.service.editar(this.pessoa).subscribe(
-      () => {
+    this.service.editar(this.pessoa).subscribe({
+      next: () => {
         this.router.navigate(["/pessoas"]);
       },
-      (error: HttpErrorResponse) => {
-        const mensagem = encodeURIComponent(error.error.mensagem);
-        const status = encodeURIComponent(error.error.status);
+      error: (erro: HttpErrorResponse) => {
+        const mensagem = encodeURIComponent(erro.error.mensagem);
+        const status = encodeURIComponent(erro.error.status);
         openErrorDialog(this.dialog, mensagem, status);
-      }
-    );
+      },
+    });
   }
 
   cancelar() {
