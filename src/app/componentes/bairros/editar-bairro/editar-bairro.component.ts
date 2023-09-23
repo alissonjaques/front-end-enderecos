@@ -51,7 +51,7 @@ export class EditarBairroComponent implements OnInit {
       });
   }
 
-  editarBairro() {
+  editarBairro(): void {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.formulario.value.codigoMunicipio = Number(
@@ -70,7 +70,7 @@ export class EditarBairroComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/bairros"]);
   }
 

@@ -35,17 +35,17 @@ export class ListarBairroComponent implements OnInit {
     });
   }
 
-  adicionarBairro() {
+  adicionarBairro(): void {
     this.router.navigate(["/bairros/criarBairro"]);
   }
 
-  editarBairro(codigoBairro: number | undefined) {
+  editarBairro(codigoBairro: number | undefined): void {
     if (codigoBairro) {
       this.router.navigate([`/bairros/editarBairro/${codigoBairro}`]);
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/menu"]);
   }
 }

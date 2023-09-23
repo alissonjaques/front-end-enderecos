@@ -44,7 +44,7 @@ export class CriarBairroComponent implements OnInit {
     });
   }
 
-  criarBairro() {
+  criarBairro(): void {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.formulario.value.codigoMunicipio = Number(
@@ -63,7 +63,7 @@ export class CriarBairroComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/bairros"]);
   }
 
