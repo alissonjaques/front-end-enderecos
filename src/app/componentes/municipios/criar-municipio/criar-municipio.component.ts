@@ -7,6 +7,7 @@ import { UfService } from "../../ufs/services/uf.service";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-criar-municipio",
@@ -15,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class CriarMunicipioComponent implements OnInit {
   formulario!: FormGroup;
-  listaUfs: Uf[] = [];
+  listaUfs$: Observable<Uf[]> = this.ufService.listar();
 
   constructor(
     private service: MunicipioService,
@@ -26,9 +27,6 @@ export class CriarMunicipioComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ufService.listar().subscribe((listaUfs) => {
-      this.listaUfs = listaUfs;
-    });
     this.formulario = this.formBuilder.group({
       codigoUF: ["", Validators.compose([Validators.required])],
       nome: [

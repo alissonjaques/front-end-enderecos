@@ -7,6 +7,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-editar-municipio",
@@ -15,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class EditarMunicipioComponent implements OnInit {
   formulario!: FormGroup;
-  listaUfs: Uf[] = [];
+  listaUfs$: Observable<Uf[]> = this.ufService.listar();
 
   constructor(
     private service: MunicipioService,
@@ -46,9 +47,6 @@ export class EditarMunicipioComponent implements OnInit {
           status: [municipio.status],
         });
       });
-    this.ufService.listar().subscribe((listaUfs) => {
-      this.listaUfs = listaUfs;
-    });
   }
 
   editarMunicipio(): void {

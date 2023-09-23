@@ -19,7 +19,10 @@
       <div class="campo campo-codigoUF">
         <label for="codigoUF">UF</label>
         <select class="input" id="codigoUF" formControlName="codigoUF">
-          <option *ngFor="let uf of listaUfs" [value]="uf.codigoUF">
+          <option
+            *ngFor="let uf of listaUfs$ | async as listaUfs"
+            [value]="uf.codigoUF"
+          >
             {{ uf.codigoUF }} - {{ uf.nome }}
           </option>
         </select>
