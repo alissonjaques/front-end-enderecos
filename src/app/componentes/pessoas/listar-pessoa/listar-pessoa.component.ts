@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Pessoa } from "../interfaces/Pessoa";
 import { PessoaService } from "../services/pessoa.service";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-listar-pessoa",
@@ -9,15 +10,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./listar-pessoa.component.css"],
 })
 export class ListarPessoaComponent implements OnInit {
-  listaPessoas: Pessoa[] = [];
+  listaPessoas$: Observable<Pessoa[]> = this.service.listar();
 
   constructor(private service: PessoaService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.service.listar().subscribe((listaPessoas) => {
-      this.listaPessoas = listaPessoas;
-    });
-  }
+  ngOnInit(): void {}
 
   adicionarPessoa(): void {
     this.router.navigate(["/pessoas/criarPessoa"]);
