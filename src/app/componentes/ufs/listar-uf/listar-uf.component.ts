@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UfService } from "../services/uf.service";
-import { EMPTY, catchError } from "rxjs";
+import { EMPTY, Observable, catchError } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
+import { Uf } from "../interfaces/Uf";
 
 @Component({
   selector: "app-listar-uf",
@@ -12,7 +13,7 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./listar-uf.component.css"],
 })
 export class ListarUfComponent implements OnInit {
-  listaUfs$ = this.service.listar().pipe(
+  listaUfs$: Observable<Uf[]> = this.service.listar().pipe(
     catchError((error: HttpErrorResponse) => {
       const mensagem = encodeURIComponent(
         error.error.mensagem ?? "Erro interno no servidor"

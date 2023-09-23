@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { MunicipioService } from "../services/municipio.service";
 import { Router } from "@angular/router";
 import { MunicipioCompleto } from "../interfaces/MunicipioCompleto";
-import { map } from "rxjs";
+import { Observable, map } from "rxjs";
 import { Municipio } from "../interfaces/Municipio";
 
 @Component({
@@ -12,7 +12,7 @@ import { Municipio } from "../interfaces/Municipio";
   styleUrls: ["./listar-municipio.component.css"],
 })
 export class ListarMunicipioComponent implements OnInit {
-  listaMunicipios$ = this.service
+  listaMunicipios$: Observable<MunicipioCompleto[]> = this.service
     .listar()
     .pipe(
       map((listaMunicipios) => this.getMunicipiosCompletos(listaMunicipios))
