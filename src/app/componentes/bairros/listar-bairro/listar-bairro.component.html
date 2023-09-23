@@ -14,20 +14,35 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bairro of listaBairros">
-        <td>{{bairro.codigoBairro}}</td>
-        <td>{{bairro.municipio.codigoMunicipio}} - {{bairro.municipio.nome}}</td>
-        <td>{{bairro.nome}}</td>
-        <td>{{bairro.status}}</td>
-        <td><img src="../../../../assets/imagens/icone-editar.png" (click)="editarBairro(bairro.codigoBairro)"
-            alt="Editar"></td>
-        <td><img src="../../../../assets/imagens/icone-excluir.png" alt="Deletar"></td>
+      <tr *ngFor="let bairro of listaBairros$ | async as listaBairros">
+        <td>{{ bairro.codigoBairro }}</td>
+        <td>
+          {{ bairro.municipio.codigoMunicipio }} - {{ bairro.municipio.nome }}
+        </td>
+        <td>{{ bairro.nome }}</td>
+        <td>{{ bairro.status }}</td>
+        <td>
+          <img
+            src="../../../../assets/imagens/icone-editar.png"
+            (click)="editarBairro(bairro.codigoBairro)"
+            alt="Editar"
+          />
+        </td>
+        <td>
+          <img
+            src="../../../../assets/imagens/icone-excluir.png"
+            alt="Deletar"
+          />
+        </td>
       </tr>
     </tbody>
   </table>
   <div class="acoes button-container">
-    <button class="custom-button" (click)="adicionarBairro()" class="botao">Adicionar</button>
-    <button class="custom-button" (click)="cancelar()" class="botao">Voltar</button>
+    <button class="custom-button" (click)="adicionarBairro()" class="botao">
+      Adicionar
+    </button>
+    <button class="custom-button" (click)="cancelar()" class="botao">
+      Voltar
+    </button>
   </div>
 </div>
-

@@ -7,6 +7,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { MatDialog } from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-editar-bairro",
@@ -15,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class EditarBairroComponent implements OnInit {
   formulario!: FormGroup;
-  listaMunicipios: Municipio[] = [];
+  listaMunicipios$: Observable<Municipio[]> = this.municipioService.listar();
 
   constructor(
     private service: BairroService,
@@ -27,9 +28,6 @@ export class EditarBairroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.municipioService.listar().subscribe((listaMunicipios) => {
-      this.listaMunicipios = listaMunicipios;
-    });
     const codigoBairro = this.route.snapshot.paramMap.get("codigoBairro");
     this.service
       .buscarPorCodigoBairro(parseInt(codigoBairro!))

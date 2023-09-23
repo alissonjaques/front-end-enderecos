@@ -24,7 +24,9 @@
           formControlName="codigoMunicipio"
         >
           <option
-            *ngFor="let municipio of listaMunicipios"
+            *ngFor="
+              let municipio of listaMunicipios$ | async as listaMunicipios
+            "
             [value]="municipio.codigoMunicipio"
           >
             {{ municipio.codigoMunicipio }} - {{ municipio.nome }}

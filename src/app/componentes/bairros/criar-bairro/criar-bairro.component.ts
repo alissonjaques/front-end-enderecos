@@ -7,6 +7,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { MatDialog } from "@angular/material/dialog";
 import { openErrorDialog } from "src/app/utils/openErrorDialog";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-criar-bairro",
@@ -15,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class CriarBairroComponent implements OnInit {
   formulario!: FormGroup;
-  listaMunicipios: Municipio[] = [];
+  listaMunicipios$: Observable<Municipio[]> = this.municipioService.listar();
 
   constructor(
     private service: BairroService,
@@ -26,9 +27,6 @@ export class CriarBairroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.municipioService.listar().subscribe((listaMunicipios) => {
-      this.listaMunicipios = listaMunicipios;
-    });
     this.formulario = this.formBuilder.group({
       codigoMunicipio: ["", Validators.compose([Validators.required])],
       nome: [

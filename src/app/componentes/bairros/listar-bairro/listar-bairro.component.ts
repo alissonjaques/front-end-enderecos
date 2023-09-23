@@ -3,6 +3,8 @@ import { BairroCompleto } from "../interfaces/BairroCompleto";
 import { BairroService } from "../services/bairro.service";
 import { MunicipioService } from "../../municipios/services/municipio.service";
 import { Router } from "@angular/router";
+import { Observable, map } from "rxjs";
+import { Bairro } from "../interfaces/Bairro";
 
 @Component({
   selector: "app-listar-bairro",
@@ -10,7 +12,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./listar-bairro.component.css"],
 })
 export class ListarBairroComponent implements OnInit {
-  listaBairros: BairroCompleto[] = [];
+  listaBairros$: Observable<BairroCompleto[]> = this.service
+    .listar()
+    .pipe(map((bairros) => this.getBairrosCompletos(bairros)));
 
   constructor(
     private service: BairroService,
@@ -18,21 +22,23 @@ export class ListarBairroComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.service.listar().subscribe((listaBairros) => {
-      listaBairros.map((bairro) => {
-        this.municipioService
-          .buscarPorCodigoMunicipio(bairro.codigoMunicipio)
-          .subscribe((municipio) => {
-            this.listaBairros.push({
-              codigoBairro: bairro.codigoBairro,
-              municipio: municipio,
-              nome: bairro.nome,
-              status: bairro.status,
-            });
+  ngOnInit(): void {}
+
+  getBairrosCompletos(bairros: Bairro[]): BairroCompleto[] {
+    const listaBairrosCompletos: BairroCompleto[] = [];
+    bairros.map((bairro) => {
+      this.municipioService
+        .buscarPorCodigoMunicipio(bairro.codigoMunicipio)
+        .subscribe((municipio) => {
+          listaBairrosCompletos.push({
+            codigoBairro: bairro.codigoBairro,
+            municipio: municipio,
+            nome: bairro.nome,
+            status: bairro.status,
           });
-      });
+        });
     });
+    return listaBairrosCompletos;
   }
 
   adicionarBairro(): void {
