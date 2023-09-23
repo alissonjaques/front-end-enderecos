@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Bairro } from "../interfaces/Bairro";
 import { BairroService } from "../services/bairro.service";
 import { MunicipioService } from "../../municipios/services/municipio.service";
 import { Router } from "@angular/router";

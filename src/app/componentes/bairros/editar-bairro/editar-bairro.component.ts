@@ -34,7 +34,6 @@ export class EditarBairroComponent implements OnInit {
     this.service
       .buscarPorCodigoBairro(parseInt(codigoBairro!))
       .subscribe((bairro) => {
-        console.log(bairro);
         this.formulario = this.formBuilder.group({
           codigoBairro: [bairro.codigoBairro],
           codigoMunicipio: [bairro.codigoMunicipio],

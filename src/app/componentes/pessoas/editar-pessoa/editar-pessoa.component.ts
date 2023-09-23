@@ -36,10 +36,9 @@ export class EditarPessoaComponent implements OnInit {
     cep: "",
   };
 
-  codigoEndereco: number = 0;
-
   bairros: Bairro[] = [];
   enderecos: Endereco[] = [];
+  codigoPessoa!: number;
 
   constructor(
     private service: PessoaService,
@@ -59,6 +58,7 @@ export class EditarPessoaComponent implements OnInit {
       this.service.buscarPorLogin(login).subscribe((pessoa) => {
         this.pessoa = pessoa[0];
         if (this.pessoa.codigoPessoa) {
+          this.codigoPessoa = this.pessoa.codigoPessoa;
           this.enderecoService
             .buscarPorCodigoPessoa(this.pessoa.codigoPessoa)
             .subscribe((enderecos) => {
@@ -70,28 +70,21 @@ export class EditarPessoaComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(ModalEnderecoComponent, {
+    this.dialog.open(ModalEnderecoComponent, {
       width: "50%",
       hasBackdrop: true,
       data: {
         enderecos: this.enderecos,
         bairros: this.bairros,
-        CodigoEndereco: this.codigoEndereco,
+        codigoPessoa: this.codigoPessoa,
       },
     });
   }
 
   adicionarEndereco() {
-    this.codigoEndereco++;
-    console.log(this.pessoa.codigoPessoa);
     this.enderecos.push({
-      codigoEndereco: this.codigoEndereco,
       codigoPessoa: this.pessoa.codigoPessoa,
-      codigoBairro: this.endereco.codigoBairro,
-      nomeRua: this.endereco.nomeRua,
-      numero: this.endereco.numero,
-      complemento: this.endereco.complemento,
-      cep: this.endereco.cep,
+      ...this.endereco,
     });
   }
 
@@ -109,16 +102,7 @@ export class EditarPessoaComponent implements OnInit {
 
   editarPessoa() {
     this.pessoa.status = Number(this.pessoa.status);
-    this.pessoa.enderecos = this.enderecos.map((endereco) => {
-      return {
-        codigoPessoa: endereco.codigoPessoa,
-        codigoBairro: endereco.codigoBairro,
-        nomeRua: endereco.nomeRua,
-        numero: endereco.numero,
-        complemento: endereco.complemento,
-        cep: endereco.cep,
-      };
-    });
+    this.pessoa.enderecos = this.enderecos;
     this.service.editar(this.pessoa).subscribe(
       () => {
         this.router.navigate(["/pessoas"]);
