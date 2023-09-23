@@ -19,17 +19,17 @@ export class ListarPessoaComponent implements OnInit {
     });
   }
 
-  adicionarPessoa() {
+  adicionarPessoa(): void {
     this.router.navigate(["/pessoas/criarPessoa"]);
   }
 
-  editarPessoa(login: string | undefined) {
+  editarPessoa(login: string | undefined): void {
     if (login) {
       this.router.navigate([`/pessoas/editarPessoa/${login}`]);
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/menu"]);
   }
 }

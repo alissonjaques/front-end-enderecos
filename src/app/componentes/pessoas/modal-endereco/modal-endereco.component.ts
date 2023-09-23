@@ -66,7 +66,7 @@ export class ModalEnderecoComponent implements OnInit {
     });
   }
 
-  adicionarEndereco() {
+  adicionarEndereco(): void {
     if (this.formulario.valid) {
       this.enderecos.push({
         codigoPessoa: this.codigoPessoa,

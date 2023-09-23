@@ -52,8 +52,8 @@ export class CriarPessoaComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ModalEnderecoComponent, {
+  openDialog(): void {
+    this.dialog.open(ModalEnderecoComponent, {
       width: "50%",
       hasBackdrop: true,
       data: {
@@ -64,7 +64,7 @@ export class CriarPessoaComponent implements OnInit {
     });
   }
 
-  adicionarEndereco() {
+  adicionarEndereco(): void {
     this.codigoEndereco++;
     this.enderecos.push({
       codigoEndereco: this.codigoEndereco,
@@ -76,7 +76,7 @@ export class CriarPessoaComponent implements OnInit {
     });
   }
 
-  removerEndereco(codigoEndereco: number | undefined) {
+  removerEndereco(codigoEndereco: number | undefined): void {
     if (codigoEndereco) {
       const index = this.enderecos.findIndex(
         (endereco) => endereco.codigoEndereco == codigoEndereco
@@ -88,7 +88,7 @@ export class CriarPessoaComponent implements OnInit {
     }
   }
 
-  criarPessoa() {
+  criarPessoa(): void {
     this.pessoa.status = Number(this.pessoa.status);
     this.pessoa.enderecos = this.enderecos.map((endereco) => {
       return {
@@ -111,7 +111,7 @@ export class CriarPessoaComponent implements OnInit {
     });
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/pessoas"]);
   }
 }

@@ -69,7 +69,7 @@ export class EditarPessoaComponent implements OnInit {
     }
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(ModalEnderecoComponent, {
       width: "50%",
       hasBackdrop: true,
@@ -81,14 +81,14 @@ export class EditarPessoaComponent implements OnInit {
     });
   }
 
-  adicionarEndereco() {
+  adicionarEndereco(): void {
     this.enderecos.push({
       codigoPessoa: this.pessoa.codigoPessoa,
       ...this.endereco,
     });
   }
 
-  removerEndereco(codigoEndereco: number | undefined) {
+  removerEndereco(codigoEndereco: number | undefined): void {
     if (codigoEndereco) {
       const index = this.enderecos.findIndex(
         (endereco) => endereco.codigoEndereco == codigoEndereco
@@ -100,7 +100,7 @@ export class EditarPessoaComponent implements OnInit {
     }
   }
 
-  editarPessoa() {
+  editarPessoa(): void {
     this.pessoa.status = Number(this.pessoa.status);
     this.pessoa.enderecos = this.enderecos;
     this.service.editar(this.pessoa).subscribe({
@@ -115,7 +115,7 @@ export class EditarPessoaComponent implements OnInit {
     });
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/pessoas"]);
   }
 }
