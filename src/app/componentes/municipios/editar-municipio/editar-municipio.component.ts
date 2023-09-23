@@ -52,7 +52,7 @@ export class EditarMunicipioComponent implements OnInit {
     });
   }
 
-  editarMunicipio() {
+  editarMunicipio(): void {
     if (this.formulario.valid) {
       this.formulario.value.status = Number(this.formulario.value.status);
       this.formulario.value.codigoUF = Number(this.formulario.value.codigoUF);
@@ -69,7 +69,7 @@ export class EditarMunicipioComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(["/municipios"]);
   }
 
