@@ -1,81 +1,42 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MenuComponent } from "./componentes/menu/menu.component";
-import { ListarUfComponent } from "./componentes/ufs/listar-uf/listar-uf.component";
-import { EditarUfComponent } from "./componentes/ufs/editar-uf/editar-uf.component";
-import { ErroComponent } from "./componentes/erro/erro.component";
-import { CriarUfComponent } from "./componentes/ufs/criar-uf/criar-uf.component";
-import { ListarMunicipioComponent } from "./componentes/municipios/listar-municipio/listar-municipio.component";
-import { CriarMunicipioComponent } from "./componentes/municipios/criar-municipio/criar-municipio.component";
-import { EditarMunicipioComponent } from "./componentes/municipios/editar-municipio/editar-municipio.component";
-import { ListarBairroComponent } from "./componentes/bairros/listar-bairro/listar-bairro.component";
-import { CriarBairroComponent } from "./componentes/bairros/criar-bairro/criar-bairro.component";
-import { EditarBairroComponent } from "./componentes/bairros/editar-bairro/editar-bairro.component";
-import { ListarPessoaComponent } from "./componentes/pessoas/listar-pessoa/listar-pessoa.component";
-import { CriarPessoaComponent } from "./componentes/pessoas/criar-pessoa/criar-pessoa.component";
-import { EditarPessoaComponent } from "./componentes/pessoas/editar-pessoa/editar-pessoa.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "menu",
-    pathMatch: "full",
+    loadChildren: () =>
+      import("./componentes/menu/menu.module").then((m) => m.MenuModule),
   },
   {
-    path: "menu",
-    component: MenuComponent,
+    path: "",
+    loadChildren: () =>
+      import("./componentes/ufs/ufs.module").then((m) => m.UfsModule),
   },
   {
-    path: "ufs",
-    component: ListarUfComponent,
+    path: "",
+    loadChildren: () =>
+      import("./componentes/municipios/municipios.module").then(
+        (m) => m.MunicipiosModule
+      ),
   },
   {
-    path: "ufs/criarUf",
-    component: CriarUfComponent,
+    path: "",
+    loadChildren: () =>
+      import("./componentes/bairros/bairros.module").then(
+        (m) => m.BairrosModule
+      ),
   },
   {
-    path: "ufs/editarUf/:codigoUF",
-    component: EditarUfComponent,
+    path: "",
+    loadChildren: () =>
+      import("./componentes/pessoas/pessoas.module").then(
+        (m) => m.PessoasModule
+      ),
   },
   {
-    path: "municipios",
-    component: ListarMunicipioComponent,
-  },
-  {
-    path: "municipios/criarMunicipio",
-    component: CriarMunicipioComponent,
-  },
-  {
-    path: "municipios/editarMunicipio/:codigoMunicipio",
-    component: EditarMunicipioComponent,
-  },
-  {
-    path: "bairros",
-    component: ListarBairroComponent,
-  },
-  {
-    path: "bairros/criarBairro",
-    component: CriarBairroComponent,
-  },
-  {
-    path: "bairros/editarBairro/:codigoBairro",
-    component: EditarBairroComponent,
-  },
-  {
-    path: "pessoas",
-    component: ListarPessoaComponent,
-  },
-  {
-    path: "pessoas/criarPessoa",
-    component: CriarPessoaComponent,
-  },
-  {
-    path: "pessoas/editarPessoa/:login",
-    component: EditarPessoaComponent,
-  },
-  {
-    path: "erro",
-    component: ErroComponent,
+    path: "",
+    loadChildren: () =>
+      import("./componentes/erros/erros.module").then((m) => m.ErrosModule),
   },
 ];
 

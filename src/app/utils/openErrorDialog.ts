@@ -1,12 +1,12 @@
 import { MatDialog } from "@angular/material/dialog";
-import { ErroComponent } from "../componentes/erro/erro.component";
+import { ErroComponent } from "../componentes/erros/erro.component";
 
 export function openErrorDialog(
   dialog: MatDialog,
   mensagem: string,
   status: string
 ) {
-  const dialogRef = dialog.open(ErroComponent, {
+  dialog.open(ErroComponent, {
     width: "50%",
     hasBackdrop: true,
     data: {
